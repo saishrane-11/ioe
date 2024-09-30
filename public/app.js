@@ -23,8 +23,17 @@ function upadateCaseNumber(product, price, isIncreasing){
         return productNumber;
     }
     function calculateTotal(){
+
+        let obj={};
         const phoneTotal = getInputvalue('phone') * 300;
+        if(phoneTotal!=0){
+            obj.phone=phoneTotal;
+            
+        }
         const caseTotal = getInputvalue('case') * 200;
+        if(caseTotal!=0){
+            obj.case=caseTotal;
+        }
         const moongTotal = getInputvalue('moong') * 300;
         const upvasTotal = getInputvalue('upvas') * 300;
         const dalTotal = getInputvalue('dal') * 300;
@@ -37,7 +46,8 @@ function upadateCaseNumber(product, price, isIncreasing){
         const subTotal = ravaTotal+ dosaTotal+ idliTotal+ poheTotal+ phoneTotal + moongTotal + caseTotal + upvasTotal +dalTotal+kheerTotal+rotiTotal;
         const tax = subTotal / 10;
         const totalPrice = subTotal + tax;
-
+        const jsonString = JSON.stringify(obj);
+        alert(jsonString);
         // update on the html 
         document.getElementById('sub-total').innerText = subTotal;
         document.getElementById('tax-amount').innerText = tax;
